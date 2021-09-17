@@ -54,12 +54,9 @@ const LargeNav = () => {
                 className="w-full focus:outline-none" />
             </div>
           </div>
-          <div className="ml-20 flex gap-4">
-            <h3>
-              Movie
-           <BiCameraMovie/>
-           </h3> 
+          <div className="ml-20 flex gap-4"> 
             <button className="text-grey-500 text-xl hover:text-grey-800">Login</button>
+            <BiCameraMovie/>
             <button className="text-grey-500 text-xl hover:text-grey-800">Signup</button>
           </div>
         </div>
