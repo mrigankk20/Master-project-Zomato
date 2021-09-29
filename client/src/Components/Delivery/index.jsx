@@ -1,10 +1,10 @@
-import React from 'react'
-import DeliveryCarousal from './DeliveryCarousal';
+import React from "react";
+import DeliveryCarousel from "./DeliveryCarousel";
 
 const Delivery = () => {
     return (
         <>
-            <DeliveryCarousal />
+            <DeliveryCarousel />
         </>
     );
 };

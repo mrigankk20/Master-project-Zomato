@@ -3,10 +3,9 @@ import { useParams } from "react-router-dom";
 import Delivery from "./Delivery";
 const Master = () => {
     const { type } = useParams();
-    return 
-        <>
-            {type==="delivery" && <Delivery />}
-        </>;
+    return <div className="my-5">
+              {(type === "delivery" || null) && <Delivery />}
+           </div>;
 };
 
 export default Master;
