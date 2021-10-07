@@ -1,10 +1,16 @@
-import { findByDisplayValue } from "@testing-library/dom";
 import React, { useState, useEffect } from "react";
+import { TiStarOutline } from "react-icons/ti";
+import {RiDirectionLine} from "react-icons/ri";
+import {RiShareForwardLine, RiBookmarkLine} from "react-icons/ri";
+
+
 // components
 import RestaurantNavbar from "../Components/Navbar/restaurantNavbar";
 import ImageGrid from "../Components/restaurant/ImageGrid";
-import { TiStarFullOutline } from "react-icons/ti";
-const RestaurantLayout = () => {
+import InfoButtons from "../Components/restaurant/InfoButtons";
+import RestaurantInfo from "../Components/restaurant/RestaurantInfo";
+import TabContainer from "../Components/restaurant/Tabs";
+const RestaurantLayout = (props) => {
 
 
    return (
@@ -19,32 +25,25 @@ const RestaurantLayout = () => {
                "https://b.zmtcdn.com/data/pictures/5/19564455/2334bd0094d0eb1fb7541d7090935c6c_o2_featured_v2.jpg",
                "https://b.zmtcdn.com/data/pictures/5/19564455/2334bd0094d0eb1fb7541d7090935c6c_o2_featured_v2.jpg"
             ]} />
-            <div className="my-4">
-               <div className="flex flex-col flex-col-reverse md:flex-row md:items-center justify-between gap-3">
-                  <h1 className="py-5 text-xl md:text-3xl font-semibold md:font-bold">Pizza Hut</h1>
-                  <div className="flex items-center gap-6 text:xs md:text-base">
-                     <div className="flex items-center gap-2">
-                        <span className="flex rounded items-center gap-1 text-white font-medium bg-green-600 p-1">
-                           3.8 <TiStarFullOutline />
-                        </span>
-                        <span>
-                           <strong>2</strong>
-                           <p className="border-dashed border-b">Dining Reviews</p>
-                        </span>
-                     </div>
-
-                     <div className="flex items-center gap-2">
-                        <span className="flex rounded items-center gap-1 text-white font-medium bg-green-600 p-1">
-                           3.8 <TiStarFullOutline />
-                        </span>
-                        <span>
-                           <strong>2</strong>
-                           <p className="border-dashed border-b">Delivery Reviews</p>
-                        </span>
-                     </div>
-                  </div>
-               </div>
+            <RestaurantInfo name="Pizza Hut" restaurantRating="3.5" deliveryRating="4.0" cuisine="North Indian, Chinese, Continental, Italian, Mughlai" address="Karol Bagh, New Delhi" />
+            <div className="flex flex-wrap gap-3 my-4">
+               <InfoButtons isActive>
+                  <TiStarOutline /> Add Review
+               </InfoButtons>
+               <InfoButtons>
+                  <RiDirectionLine /> Direction
+               </InfoButtons>
+               <InfoButtons>
+                  <RiBookmarkLine /> Bookmarks
+               </InfoButtons>
+               <InfoButtons>
+                  <RiShareForwardLine /> Share
+               </InfoButtons>
             </div>
+            <div className="my-10">
+             <TabContainer/>
+            </div>
+            <div className="relative">{props.children}</div>
          </div>
       </>
    );
