@@ -7,7 +7,7 @@ import MenuCollection from "../../Components/restaurant/MenuCollection";
 import MenuSimilarRestaurantcard from "../../Components/restaurant/MenuSimilarRestaurantcard";
 import { NextArrow, PrevArrow } from "../../Components/carousalArrow";
 import ReviewCard from "../../Components/restaurant/Reviews/reviewCard";
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import Mapview from "../../Components/restaurant/Mapview";
 
 const Overview = () => {
     const { id } = useParams();
@@ -68,7 +68,7 @@ const Overview = () => {
 
                     <h4 className="text-lg font-medium my-4">Cuisines</h4>
                     <div className="flex flex-wrap gap-2">
-                        <span className="border border-gray-600 text-blue-600 px-2 py-1 rounded-full">
+                        <span className="border border-gray-600 text-blue-900 px-2 py-1 rounded-full">
                             Street Food
                         </span>
                         <span className="border border-gray-600 text-blue-600 px-2 py-1 rounded-full">
@@ -129,6 +129,9 @@ const Overview = () => {
                         />
                     </div>
                     <div className="my-4 w-full md:hidden flex flex-col gap-4">
+                    <Mapview title="Pizza Hut" phno="+914442465446" mapLocation={[28.466069600022877, 77.50757016322306]} address="Ground Floor, Ansal Plaza, Greater Noida, Uttar Pradesh 201310"/>
+                    </div>
+                    <div className="my-4 flex flex-col gap-4">
                         <ReviewCard />
                         <ReviewCard />
                         <ReviewCard />
@@ -138,26 +141,7 @@ const Overview = () => {
                     style={{ height: "fit-content" }}
                     className="hidden md:flex md:w-4/12 sticky rounded-xl top-2 bg-white p-3 shadow-md flex flex-col gap-4"
                 >
-                    <div>
-                        <h4 className="text-xl font-medium ">Call</h4>
-                        <h5 className="text-zomato-400 font-medium">+9138928372829</h5>
-                    </div>
-                    <div>
-                        <h4 className="text-xl font-medium ">Direction</h4>
-                        <div className="w-full h-48">
-                        <MapContainer center={[28.46539051439256, 77.5077418245888]} zoom={13} scrollWheelZoom={false}>
-                            <TileLayer
-                                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                            />
-                            <Marker position={[28.46539051439256, 77.5077418245888]}>
-                                <Popup>
-                                    A pretty CSS3 popup. <br /> Easily customizable.
-                                </Popup>
-                            </Marker>
-                        </MapContainer>
-                        </div>
-                    </div>
+                    <Mapview title="Pizza Hut" phno="+914442465446" mapLocation={[28.466069600022877, 77.50757016322306]} address="Ground Floor, Ansal Plaza, Greater Noida, Uttar Pradesh 201310"/>  
                 </aside>
             </div>
         </>
