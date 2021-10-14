@@ -1,12 +1,14 @@
-import React from "react";
-import { ImUser } from "react-icons/im";
+import React, { useState } from "react";
 import { ImLocation2 } from "react-icons/im";
-import {BiCameraMovie} from "react-icons/bi";
+import { FaUserAlt } from "react-icons/fa";
+import { BiCameraMovie } from "react-icons/bi";
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 import { HiSearch } from "react-icons/hi";
+import SignIn from "../Auth/SignIn";
+import SignUp from "../Auth/SignUp";
 
-
-const MobileNav = () => {
+const MobileNav = ({ SignIn, SignUp }) => {
+  const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   return (
     <div className="flex w-full items-center justify-between lg:hidden">
       <div className="w-12">
@@ -15,21 +17,27 @@ const MobileNav = () => {
           className="w-full h-full"
         />
       </div>
-      <div className="flex items-center gap-3">
-        <button className="bg-zomato-400 text-white px-3 py-2 rounded-full">
+      <div className="flex items-center gap-3 relative">
+        <button className="bg-zomato-400 text-white py-2 px-3 rounded-full">
           Use App
         </button>
-        <span className="border p-2 border-red-500 text-zomato-400 rounded-full">
-          <ImUser />
+        <span onClick={() => setIsDropDownOpen((prev) => !prev)} className="border p-2 border-gray-300 text-zomato-400 rounded-full">
+          <FaUserAlt />
         </span>
-      </div>
+        {isDropDownOpen && (
+          <div className="absolute shadow-lg py-3 -bottom-20 -right-4 w-full bg-white z-20 flex flex-col gap-2">
+            <button onClick={SignIn}>Sign In</button>
+            <button onClick={SignUp}>Sign Up</button>
+          </div>
+        )}
+        </div>
     </div>
 
   );
 };
 
 
-const LargeNav = () => {
+const LargeNav = ({ SignIn, SignUp }) => {
   return (
     <>
       <div className="hidden lg:inline container px-20 mx-auto">
@@ -54,10 +62,10 @@ const LargeNav = () => {
                 className="w-full focus:outline-none" />
             </div>
           </div>
-          <div className="ml-20 flex gap-4"> 
-            <button className="text-grey-500 text-xl hover:text-grey-800">Login</button>
-            <BiCameraMovie/>
-            <button className="text-grey-500 text-xl hover:text-grey-800">Signup</button>
+          <div className="ml-20 flex gap-4">
+            <button onClick={SignIn} className="text-grey-500 text-xl hover:text-grey-800">Login</button>
+            <BiCameraMovie />
+            <button onClick={SignUp} className="text-grey-500 text-xl hover:text-grey-800">Signup</button>
           </div>
         </div>
       </div>
@@ -72,11 +80,17 @@ const LargeNav = () => {
 
 
 const Navbar = () => {
+  const [openSignin, setOpenSignin] = useState(false);
+  const [openSignup, setOpenSignup] = useState(false);
+  const openSignInmodal = () => setOpenSignin(true);
+  const openSignUpmodal = () => setOpenSignup(true);
   return (
     <>
-      <nav className="p-4 flex  bg-white shadow-md w-full items-center">
-        <MobileNav />
-        <LargeNav />
+      <SignIn isOpen={openSignin} setIsOpen={setOpenSignin} />
+      <SignUp isOpen={openSignup} setIsOpen={setOpenSignup} />
+      <nav className="p-4 flex bg-white shadow-md lg:shadow-none w-full items-center">
+        <MobileNav SignIn={openSignInmodal} SignUp={openSignUpmodal}/>
+        <LargeNav SignIn={openSignInmodal} SignUp={openSignUpmodal}/>
       </nav>
     </>
   );

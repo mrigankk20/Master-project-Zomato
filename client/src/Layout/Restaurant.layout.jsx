@@ -10,6 +10,7 @@ import ImageGrid from "../Components/restaurant/ImageGrid";
 import InfoButtons from "../Components/restaurant/InfoButtons";
 import RestaurantInfo from "../Components/restaurant/RestaurantInfo";
 import TabContainer from "../Components/restaurant/Tabs";
+import CardContainer from "../Components/Cart/CardContainer";
 const RestaurantLayout = (props) => {
 
 
@@ -25,7 +26,7 @@ const RestaurantLayout = (props) => {
                "https://b.zmtcdn.com/data/pictures/5/19564455/2334bd0094d0eb1fb7541d7090935c6c_o2_featured_v2.jpg",
                "https://b.zmtcdn.com/data/pictures/5/19564455/2334bd0094d0eb1fb7541d7090935c6c_o2_featured_v2.jpg"
             ]} />
-            <RestaurantInfo name="Pizza Hut" restaurantRating="3.5" deliveryRating="4.0" cuisine="North Indian, Chinese, Continental, Italian, Mughlai" address="Karol Bagh, New Delhi" />
+            <RestaurantInfo name="Pizza Hut" restaurantRating="3.5" deliveryRating="4.0" cuisine="North Indian, Chinese, Continental, Italian, Mughlai" address="Ground Floor, Ansal Plaza, Greater Noida" />
             <div className="flex flex-wrap gap-3 my-4">
                <InfoButtons isActive>
                   <TiStarOutline /> Add Review
@@ -44,6 +45,7 @@ const RestaurantLayout = (props) => {
              <TabContainer/>
             </div>
             <div className="relative">{props.children}</div>
+            <CardContainer/>
          </div>
       </>
    );
