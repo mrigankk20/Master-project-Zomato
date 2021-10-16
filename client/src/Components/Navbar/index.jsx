@@ -30,7 +30,7 @@ const MobileNav = ({ SignIn, SignUp }) => {
             <button onClick={SignUp}>Sign Up</button>
           </div>
         )}
-        </div>
+      </div>
     </div>
 
   );
@@ -64,8 +64,8 @@ const LargeNav = ({ SignIn, SignUp }) => {
           </div>
           <div className="ml-20 flex gap-4">
             <button onClick={SignIn} className="text-grey-500 text-xl hover:text-grey-800">Login</button>
-            <BiCameraMovie />
             <button onClick={SignUp} className="text-grey-500 text-xl hover:text-grey-800">Signup</button>
+            <a href="https://myshowbook.vercel.app/"><BiCameraMovie size={30} /></a>
           </div>
         </div>
       </div>
@@ -89,8 +89,8 @@ const Navbar = () => {
       <SignIn isOpen={openSignin} setIsOpen={setOpenSignin} />
       <SignUp isOpen={openSignup} setIsOpen={setOpenSignup} />
       <nav className="p-4 flex bg-white shadow-md lg:shadow-none w-full items-center">
-        <MobileNav SignIn={openSignInmodal} SignUp={openSignUpmodal}/>
-        <LargeNav SignIn={openSignInmodal} SignUp={openSignUpmodal}/>
+        <MobileNav SignIn={openSignInmodal} SignUp={openSignUpmodal} />
+        <LargeNav SignIn={openSignInmodal} SignUp={openSignUpmodal} />
       </nav>
     </>
   );
