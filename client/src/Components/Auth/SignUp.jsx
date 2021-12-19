@@ -1,11 +1,35 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useState } from 'react';
 import { FcGoogle } from "react-icons/fc";
-export default function SignUp({ isOpen, setIsOpen }) {
+import { useDispatch } from "react-redux";
+import { signUp } from "../../Redux/Reducer/Auth/Auth.action";
 
+export default function SignUp({ isOpen, setIsOpen }) {
+    const [userData, setUserData] = useState({
+      email: "",
+      password: "",
+      fullname: "",
+    });
+  
+    const dispatch = useDispatch();
+  
+    const handleChange = (e) =>
+      setUserData((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+  
     function closeModal() {
-        setIsOpen(false)
+      setIsOpen(false);
     }
+  
+    const submit = () => {
+      setUserData({
+        email: "",
+        password: "",
+        fullname: "",
+      });
+      dispatch(signUp(userData));
+    };
+    const googlesignin = () =>
+      (window.location.href = "http://localhost:4000/auth/google");
 
 
     return (
@@ -52,7 +76,7 @@ export default function SignUp({ isOpen, setIsOpen }) {
                                 >
                                 </Dialog.Title>
                                 <div className="mt-2 flex flex-col gap-3 w-full">
-                                    <button className="py-2 justify-center rounded-lg flex items-center gap-2 w-full border border-gray-400 bg-white text-gray-700 hover:bg-gray-100">
+                                    <button onClick={googlesignin} className="py-2 justify-center rounded-lg flex items-center gap-2 w-full border border-gray-400 bg-white text-gray-700 hover:bg-gray-100">
                                         Signup with Google<FcGoogle />
                                     </button>
                                     <form className="flex flex-col gap-3 ">

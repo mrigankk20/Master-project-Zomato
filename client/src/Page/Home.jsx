@@ -1,18 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import {useDispatch} from "react-redux";
+
 import Delivery from "../Components/Delivery";
 import Dining from "../Components/Dining";
 import NightLife from "../Components/NightLife";
 import Nutrition from "../Components/Nutrition";
-
+import { getRestaurant } from "../Redux/Reducer/restaurant/restaurant.action";
 const Homes = () => {
     const { type } = useParams();
-    return <div className="my-5">
-              {(type === "delivery" || null) && <Delivery />}
-              {type === "dining" && <Dining />}
-              {type === "night" && <NightLife />}
-              {type === "nutri" && <Nutrition />}
-           </div>;
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getRestaurant());
+    },[]);
+    return (
+        <div className="my-5">
+            {(type === "delivery" || null) && <Delivery />}
+            {type === "dining" && <Dining />}
+            {type === "night" && <NightLife />}
+            {type === "nutri" && <Nutrition />}
+        </div>
+    );
 };
 
 export default Homes;

@@ -1,4 +1,5 @@
-import React,{useState} from "react";
+import React,{useState, useEffect} from "react";
+import { useSelector } from "react-redux";
 import RestaurantCard from "../RestaurantCard";
 import Brand from "./Brand";
 import DeliveryCarousel from "./DeliveryCarousel";
@@ -31,25 +32,34 @@ const Delivery = () => {
             
         },
         {
-            _id:"124567",
-            photos:["https://b.zmtcdn.com/data/pictures/7/313267/63bf34b2267e6d0777d58be89f0c760b_o2_featured_v2.jpg"],
-            name:"For God's Cake",
-            cuisine:["Bakery"],
-            averageCost:200,
+            _id:"12467",
+            photos:["https://b.zmtcdn.com/data/dish_photos/12c/526b43e678cf2d8f524544881c3a812c.jpg"],
+            name:"Pizza Hut",
+            cuisine:["Pizza hut"],
+            averageCost:500,
             isPro:true,
             isOff: 70,
             durationOfdelivery: 30,
             restaurantReviewValue: 4.2,
             
         },
+        
     ]);
+    const reduxState = useSelector((globalStore) => globalStore.restaurant.restaurants);
+    useEffect(() => {
+        reduxState.restaurants && setRestaurantList(reduxState.restaurants);
+    }, [reduxState.restaurants]);
+    
     return (
         <>
             <DeliveryCarousel />
             <Brand />
+            <h1 className="text-xl mt-4 mb-2 md:mt-8 md:text-3xl md:font-semibold">
+                Delivery in Pari Chowk
+            </h1>
             <div className="flex justify-between flex-wrap">
                 {restaurantList.map((restaurant) =>(
-                    <RestaurantCard {...restaurant} key ={restaurant._id} />
+                    <RestaurantCard {...restaurant} key ={restaurant._id} whereIsthisres="Ansal Plaza, Greater Noida" />
                 ))}
             </div>
         </>

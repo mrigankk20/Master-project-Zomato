@@ -1,5 +1,5 @@
 import React from "react";
-import PictureCarouselCard from "../PictureCarouselCard";
+import PictureCard from "../PictureCard";
 
 import Slider from "react-slick";
 import { NextArrow, PrevArrow } from "../carousalArrow";
@@ -44,16 +44,12 @@ const DiningCarousal = () => {
   return (
     <div className="w-full">
       <Slider {...settings}>
-        <PictureCarouselCard />
-        <PictureCarouselCard />
-        <PictureCarouselCard />
-        <PictureCarouselCard />
-        <PictureCarouselCard />
-        <PictureCarouselCard />
-        <PictureCarouselCard />
-        <PictureCarouselCard />
-        <PictureCarouselCard />
-        <PictureCarouselCard />
+        <PictureCard />
+        <PictureCard />
+        <PictureCard />
+        <PictureCard />
+        <PictureCard />
+        <PictureCard />
       </Slider>
     </div>
   );

@@ -5,9 +5,18 @@ import passport from "passport";
 import { ReviewModel } from "../../database/AllModels";
 
 const Router = express.Router();
+
+Router.get("/:resid", async (req, res) => {
+    try {
+      const reviews = await ReviewModel.find({ restaurant: req.params.resid });
+      return res.json({ reviews });
+    } catch (error) {
+      return res.status(500).json({ error: error.message });
+    }
+  });
+
 Router.post("/new", async (req, res) => {
     try {
-
         const { reviewData } = req.body;
         await ReviewModel.create(reviewData);
         return res.json({ review: "Successfully Created Review" });
